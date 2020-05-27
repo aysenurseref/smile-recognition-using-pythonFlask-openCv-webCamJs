@@ -1,0 +1,13 @@
+alabaster==0.7.12
+anaconda-client==1.7.2
+anaconda-project==0.8.3
+Flask==1.1.1
+Flask-JSON==0.3.4
+Jinja2==2.10.1
+joblib==0.13.2
+numba==0.45.1
+numexpr==2.7.0
+numpy==1.16.5
+numpydoc==0.9.1
+opencv-python==4.1.1.26
+pandas==0.25.1

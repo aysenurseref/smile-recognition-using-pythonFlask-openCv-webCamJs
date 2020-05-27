@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        .navbar {
+            background-color: #00b5cc;
+            color:white
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" >
+                Form
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle"
+                aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+ 
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>Form</h1>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+
+
+        {% for category, message in messages %}
+ 
+        <div class="alert alert-{{category}}" role="alert">
+            {{message}}
+        </div>
+        {% endfor %}
+
+        {% endif %}
+        {% endwith %}
+        <form method="POST" onsubmit="return false">
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Your First Name</label>
+                <input type="text" class="form-control" name="ad" id="exampleFormControlInput1" placeholder="Ayşenur"
+                    required data-val="true" data-val-required="Boş Bırakılamaz">
+
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlInput2">Your Last Name</label>
+                <input type="text" class="form-control" name="soyad" id="exampleFormControlInput2" placeholder="Şeref"
+                    required data-val="true" data-val-required="Boş Bırakılamaz">
+
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlInput3">Your Email address</label>
+                <input type="email" class="form-control" id="exampleFormControlInput3"
+                    placeholder="aseref.256@gmail.com">
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlInput4">Your Phone Number</label>
+                <input type="text" class="form-control" id="exampleFormControlInput4" placeholder="">
+            </div>
+
+            <div class="form-group">
+                <label for="exampleFormControlSelect1">Select Your Country</label>
+                <select class="form-control" id="exampleFormControlSelect1">
+                    <option>Turkey</option>
+
+                </select>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-6">
+                        <label for="exampleFormControlInput5">City</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput5" placeholder="Ankara">
+                    </div>
+                    <div class="col-6">
+                        <label for="exampleFormControlInput6">Zip Code</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput6" placeholder="06">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="exampleFormControlSelect2">Select Your Gender</label>
+                <select class="form-control" id="exampleFormControlSelect2">
+                    <option>Male</option>
+                    <option>Female</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>We collect and process your data in our hiring process confidentially, please check out our
+                    Candidate Privacy Policy.To continue, please confirm it.</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                    <label class="form-check-label" for="defaultCheck1">
+                        Confirm
+                    </label>
+                </div>
+            </div>
+      
+           
+
+            <div class="row">
+                <p class="font-weight-bold">SAY CHEESE</p>
+                <p>If you want to sent form, say cheese and give us a big smile, take a
+                    snapshot.</p>
+
+                <div id="my_camera"></div>
+
+
+            </div>
+            <div class="row">
+                <div id="results"></div>
+            </div>
+            <div class="row">
+                <button type="button" class="btn btn-primary" id="snap">Take Snapshot</button>
+
+           
+
+
+            </div>
+            <div class="row form-group">
+                <button type="submit" class="btn btn-success" id="send">Send Form</button>
+
+            </div>
+
+        </form>
+
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.9/jquery.validate.unobtrusive.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script language="JavaScript">
+
+        $(function () {
+            var control_smile;
+            Webcam.set({
+                width: 320,
+                height: 240,
+                image_format: 'jpeg',
+                jpeg_quality: 100
+            });
+            Webcam.attach('#my_camera');
+            $("#snap").click(function () {
+                Webcam.snap(function (data_uri) {
+                    // display results in page
+                    document.getElementById('results').innerHTML =
+                        '<img id="image" src="' + data_uri + '"/>';
+                });
+
+            })
+
+            $("#send").click(function () {
+                var img = document.getElementById("image")
+                if (img == null) {
+                    alert("Please, take a snapshot")
+                }
+                else {
+                    fetch(img.src)
+                        .then(res => res.blob())
+                        .then(blob => {
+                            const file = new File([blob], "capture.png", {
+                                type: 'image/png'
+                            });
+                            var fd = new FormData();
+                            fd.append("snapshot", file);
+                            $.ajax({
+                                type: "POST",
+                                enctype: 'multipart/form-data',
+                                url: "/api/v1/upload/snapshot",
+                                data: fd,
+                                processData: false,
+                                contentType: false,
+                                cache: false,
+                                success: (data) => {
+                                    console.log(data)
+                                    if (data.success) {
+                                        $("form").validate()
+                                        var form = $("form");
+                                        if (form.valid()) {
+                                            $("form").attr("onsubmit", "return true").submit();
+                                        }
+
+
+
+                                    }
+                                    else {
+                                        $("form").attr("onsubmit", "return false");
+                                        alert(data.result)
+                                    }
+                                },
+                                error: function (xhr, status, error) {
+                                    alert(xhr.responseText);
+                                    $("form").attr("onsubmit", "return false");
+                                }
+                            });
+                        });
+
+                }
+
+
+
+            })
+
+
+
+        })
+
+
+
+    </script>
+
+</body>
+
+</html>
